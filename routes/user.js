@@ -3,7 +3,7 @@ const router = express()
 
 // 登入頁面
 router.get('/login', (req, res) => {
-  res.send('login page')
+  res.render('login')
 })
 // 檢查登入
 router.post('/login', (req, res, next) => {
@@ -11,7 +11,7 @@ router.post('/login', (req, res, next) => {
 })
 // 註冊頁面
 router.get('/register', (req, res) => {
-  res.send('register page')
+  res.render('register')
 })
 // 檢查註冊
 router.post('/register', (req, res, next) => {
