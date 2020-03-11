@@ -22,7 +22,7 @@ router.post('/login', (req, res, next) => {
       if (user) {
         passport.authenticate('local', { successRedirect: '/' })(req, res, next)
       } else {
-        // req.flash('warning_msg', info.message)
+        req.flash('warning_msg', info.message)
         return res.redirect('/users/login')
       }
     })(req, res, next)

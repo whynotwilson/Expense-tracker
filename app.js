@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const port = 3000
 
+app.use(flash())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -50,14 +51,14 @@ app.use(passport.session())
 require('./config/passport')(passport)
 
 // 在 res.locals 裡的資料，所有的 view 都可以存取
-// app.use((req, res, next) => {
-//   res.locals.user = req.user
-//   res.locals.isAuthenticated = req.isAuthenticated()
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
 
-//   res.locals.success_msg = req.flash('success_msg')
-//   res.locals.warning_msg = req.flash('warning_msg')
-//   next()
-// })
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
 
 app.use('/', require('./routes/home'))
 app.use('/users', require('./routes/user'))
