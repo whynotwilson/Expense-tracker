@@ -1,0 +1,62 @@
+<!-- ./views/index.handlebars -->
+<div class="d-flex flex-column">
+
+  <!-- filter bar -->
+  <div class="d-flex flex-column" style="text-align: left;">
+    <div class="d-flex justify-content-center" style="border-radius: 8px">
+      {{!-- 月份 --}}
+      <div class="dropdown mb-2 col-3">
+            <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              月份 {{#if month}} : {{month}}{{/if}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/record{{#if category}}?category={{category}}{{/if}}">All</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">一月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">二月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">三月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">四月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">五月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">六月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">七月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">八月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">九月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十一月</a>
+              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十二月</a>
+            </div>
+      </div>
+      {{!-- 類別 --}}
+      <div class="dropdown mb-2 col-3">
+            <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              類別 {{#if category}} : {{category}}{{/if}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/record{{#if month}}?month={{month}}{{/if}}">All</a>
+              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Home">家居物業</a>
+              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Transportation">交通出行</a>
+              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Entertainment"></i>休閒娛樂</a>
+              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Food">餐飲食品</a>
+              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Others">其他</a>
+            </div>
+      </div>
+    </div>
+
+    {{!-- Total expense --}}
+    <div style="max-width: 50%; margin-right:25%; margin-left:25%;" class="mt-2 p-2 d-flex align-self-start">
+      <h3>總金額：</h3>
+      <strong class="display-3 pl-3 pr-3" style="color:coral;">{{totalCost}}</strong>
+    </div>
+  </div>
+
+  <!-- record list -->
+  <div class="row " id="data-panel">
+    {{#each records}}
+    <div class="col-4">
+
+    </div>
+    {{/each}}
+  </div>
+  
+</div>
