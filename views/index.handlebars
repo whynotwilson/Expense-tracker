@@ -54,27 +54,34 @@
   <!-- record list -->
   <div class="d-flex flex-column bd-highlight mb-3 " id="data-panel">
 
-    <div class="d-flex border rounded-lg" >
+    <div class="d-flex flex-column" >
       {{!-- 排序列 div --}}
-      {{!-- <div class=""> --}}
-        <div class="btn d-inline-block col-2">用途</div>
-        <div class="col-3" style="text-align: center;" ><a class="btn btn-primary" href="">日期</a></div>
-        <div class="col-3" style="text-align: center;" ><a class="btn btn-primary" href="">價格</a></div>
-      {{!-- </div> --}}
+      <div class="row border rounded-lg pb-2 pt-2">
+        <div class="col-1"></div>
+        <div class="col-1 btn d-inline-block">用途</div>
+        <div class="col-2" style="text-align: center;" ><a class="btn btn-primary" href="">日期</a></div>
+        <div class="col-2" style="text-align: center;" ><a class="btn btn-primary" href="">價格</a></div>
+      </div>
 
       {{!-- 內容 div --}}
       {{#each records}}
-      <div class="d-flex border rounded-lg">
-        {{#ifEquals this.category "home"}}<i class="fas fa-home"></i>{{/ifEquals}}>
-        {{#ifEquals this.category "transportation"}}<i class="fas fa-shuttle-van"></i>{{/ifEquals}}>
-        {{#ifEquals this.category "entertainment"}}<i class="fas fa-grin-beam"></i>{{/ifEquals}}>
-        {{#ifEquals this.category "food"}}<i class="fas fa-utensils"></i>{{/ifEquals}}>
-        {{#ifEquals this.category "others"}}<i class="fas fa-pen"></i>{{/ifEquals}}>
-        <div class="col-2"> {{ this.name }} </div>
-        <div class="col-3"> {{ this.date }} </div>
-        <div class="col-3"> {{ this.price }} </div>
-        <button type="button" class="btn-success">修改</button>
-        <button type="button" class="btn-danger">刪除</button>
+      <div class="row border rounded-lg pb-2 pt-2">
+        <div class="col-1" style="text-align: center;">
+          {{#ifEquals this.category "home"}}<i class="fas fa-home"></i>{{/ifEquals}}
+          {{#ifEquals this.category "transportation"}}<i class="fas fa-shuttle-van"></i>{{/ifEquals}}
+          {{#ifEquals this.category "entertainment"}}<i class="fas fa-grin-beam"></i>{{/ifEquals}}
+          {{#ifEquals this.category "food"}}<i class="fas fa-utensils"></i>{{/ifEquals}}
+          {{#ifEquals this.category "others"}}<i class="fas fa-pen"></i>{{/ifEquals}}
+        </div>
+        <div class="col-1 d-inline-block" style="text-align: center;"> {{ this.name }} </div>
+        <div class="col-2 d-inline-block" style="text-align: center;"> {{ this.date }} </div>
+        <div class="col-2 d-inline-block" style="text-align: center;"> {{ this.amount }} </div>
+        <a href="/records/{{{this._id}}}/edit" style="display: inline-block;">
+          <button type="button" class="btn btn-success">修改</button>
+        </a>
+        <a href="/records/{{{this._id}}}/delete" style="display: inline-block;">
+          <button type="button" class="btn btn-danger">刪除</button>
+        </a>
       </div>
       {{/each}}
     </div>
