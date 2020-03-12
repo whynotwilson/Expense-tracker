@@ -6,15 +6,53 @@ const { authenticated } = require('../config/auth')
 // 設定路由
 // 列出全部 & filter
 router.get('/', authenticated, (req, res) => {
-  Record.find({ userId: req.user._id })
+  const month = req.query.month || ''
+  const category = req.query.category || ''
+
+  // let dateRegex = new RegExp('')
+  // if (month) {
+  //   dateRegex = new RegExp(`[0-9]{4}-${month}-[0-9]{2}`)
+  // } else {
+  //   dateRegex = new RegExp('[0-9]{4}-[0-9]{2}-[0-9]{2}')
+  // }
+
+  let categoryRegex = new RegExp('')
+  if (category) {
+    categoryRegex = new RegExp(category)
+  } else {
+    categoryRegex = new RegExp('[a-zA-Z]')
+  }
+
+  // console.log('dateRegex', dateRegex)
+  console.log('categoryRegex', categoryRegex)
+
+  // Record.find({ userId: req.user._id })
+  Record.find({ userId: req.user._id, category: { $regex: categoryRegex } })
     .collation({ locale: 'en_US' }) // 設定英文語系
     .lean()
     .exec((err, records) => {
+      // 轉換 date 格式給前端使用
       if (err) return console.log(err)
       records.forEach((record) => {
-        record.date = record.date.toISOString().slice(0, 10) // 把日期轉成字串 xxxx-xx-xx 的格式
+        record.date = record.date.toISOString().slice(0, 10) // 把日期 Date 格式 轉成字串 xxxx-xx-xx 的格式
       })
-      return res.render('index', { records })
+      // 篩選月份
+      if (month) {
+        console.log('if (month)')
+        records = records.filter((record) => {
+          return record.date.slice(4, 8).includes(month)
+        })
+      }
+
+      console.log('month', month)
+      // test
+      records.forEach((record) => {
+        console.log(record.date)
+      })
+
+      console.log('-------')
+      console.log('')
+      return res.render('index', { records, month, category })
     })
 })
 
