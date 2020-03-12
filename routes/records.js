@@ -10,7 +10,9 @@ router.get('/', authenticated, (req, res) => {
 })
 
 // 顯示新增一筆 record 頁面
-
+router.get('/new', authenticated, (req, res) => {
+  return res.render('new')
+})
 // 顯示查看單筆 record 詳細內容
 
 // 新增一筆 record

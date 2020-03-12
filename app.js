@@ -14,6 +14,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+// 註冊樣板 ifEquals 方法
+app.engine('handlebars', exphbs({
+  helpers: {
+    ifEquals: function (arg1, arg2, options) {
+      if (arg1 === arg2) return options.fn(this)
+    }
+  }
+}))
+
 app.use(session({
   secret: 'ALPHA camp expense-tracker',
   resave: false,

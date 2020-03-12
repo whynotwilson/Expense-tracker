@@ -1,6 +1,5 @@
 <!-- ./views/index.handlebars -->
 <div class="d-flex flex-column">
-
   <!-- filter bar -->
   <div class="d-flex flex-column" style="text-align: left;">
     <div class="d-flex justify-content-center" style="border-radius: 8px">
@@ -65,12 +64,17 @@
 
       {{!-- 內容 div --}}
       {{#each records}}
-      <div class="d-flex border rounded-lg">      
+      <div class="d-flex border rounded-lg">
+        {{#ifEquals this.category "home"}}<i class="fas fa-home"></i>{{/ifEquals}}>
+        {{#ifEquals this.category "transportation"}}<i class="fas fa-shuttle-van"></i>{{/ifEquals}}>
+        {{#ifEquals this.category "entertainment"}}<i class="fas fa-grin-beam"></i>{{/ifEquals}}>
+        {{#ifEquals this.category "food"}}<i class="fas fa-utensils"></i>{{/ifEquals}}>
+        {{#ifEquals this.category "others"}}<i class="fas fa-pen"></i>{{/ifEquals}}>
         <div class="col-2"> {{ this.name }} </div>
         <div class="col-3"> {{ this.date }} </div>
         <div class="col-3"> {{ this.price }} </div>
-        <button type="button">修改</button>
-        <button type="button">刪除</button>
+        <button type="button" class="btn-success">修改</button>
+        <button type="button" class="btn-danger">刪除</button>
       </div>
       {{/each}}
     </div>
