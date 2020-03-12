@@ -44,19 +44,37 @@
     </div>
 
     {{!-- Total expense --}}
-    <div style="max-width: 50%; margin-right:25%; margin-left:25%;" class="mt-2 p-2 d-flex align-self-start">
+    <div style="max-width: 50%; margin-right:25%; margin-left:25%;" class="mt-2 p-2 d-flex align-self-start mb-5">
       <h3>總金額：</h3>
       <strong class="display-3 pl-3 pr-3" style="color:coral;">{{totalCost}}</strong>
     </div>
   </div>
 
-  <!-- record list -->
-  <div class="row " id="data-panel">
-    {{#each records}}
-    <div class="col-4">
+  <button type="button" class="col-1 btn btn-primary">新增支出</button>
 
+  <!-- record list -->
+  <div class="d-flex flex-column bd-highlight mb-3 " id="data-panel">
+
+    <div class="d-flex border rounded-lg" >
+      {{!-- 排序列 div --}}
+      {{!-- <div class=""> --}}
+        <div class="btn d-inline-block col-2">用途</div>
+        <div class="col-3" style="text-align: center;" ><a class="btn btn-primary" href="">日期</a></div>
+        <div class="col-3" style="text-align: center;" ><a class="btn btn-primary" href="">價格</a></div>
+      {{!-- </div> --}}
+
+      {{!-- 內容 div --}}
+      {{#each records}}
+      <div class="d-flex border rounded-lg">      
+        <div class="col-2"> {{ this.name }} </div>
+        <div class="col-3"> {{ this.date }} </div>
+        <div class="col-3"> {{ this.price }} </div>
+        <button type="button">修改</button>
+        <button type="button">刪除</button>
+      </div>
+      {{/each}}
     </div>
-    {{/each}}
+    
   </div>
   
 </div>
