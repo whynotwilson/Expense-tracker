@@ -11,9 +11,8 @@ router.get('/', authenticated, (req, res) => {
     .lean()
     .exec((err, records) => {
       if (err) return console.log(err)
-      // console.log('records', records)
       records.forEach((record) => {
-        record.date = record.date.toISOString().slice(0, 10)
+        record.date = record.date.toISOString().slice(0, 10) // 把日期轉成字串 xxxx-xx-xx 的格式
       })
       return res.render('index', { records })
     })
@@ -61,6 +60,18 @@ router.get('/:id/edit', authenticated, (req, res) => {
 })
 
 // 修改 record
+router.put('/:id', authenticated, (req, res) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
+    if (err) return console.log(err)
+    req.body.userId = req.user._id
+    Object.assign(record, req.body)
+
+    record.save(err => {
+      if (err) return console.log(err)
+      return res.redirect('/')
+    })
+  })
+})
 
 // 刪除 record
 
