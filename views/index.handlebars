@@ -5,40 +5,41 @@
     <div class="d-flex justify-content-center" style="border-radius: 8px">
       {{!-- 月份 --}}
       <div class="dropdown mb-2 col-3">
-            <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              月份 {{#if month}} : {{month}}{{/if}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="/record{{#if category}}?category={{category}}{{/if}}">All</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">一月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">二月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">三月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">四月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">五月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">六月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">七月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">八月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">九月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十一月</a>
-              <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十二月</a>
-            </div>
+        <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          月份 {{#if month}} : {{month}}{{/if}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/record{{#if category}}?category={{category}}{{/if}}">All</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">一月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">二月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">三月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">四月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">五月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">六月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">七月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">八月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">九月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十一月</a>
+          <a class="dropdown-item" href="/record?month={{month}}{{#if category}}&category={{category}}{{/if}}">十二月</a>
+        </div>
       </div>
       {{!-- 類別 --}}
       <div class="dropdown mb-2 col-3">
-            <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              類別 {{#if category}} : {{category}}{{/if}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="/record{{#if month}}?month={{month}}{{/if}}">All</a>
-              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Home">家居物業</a>
-              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Transportation">交通出行</a>
-              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Entertainment"></i>休閒娛樂</a>
-              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Food">餐飲食品</a>
-              <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Others">其他</a>
-            </div>
+        <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          類別 {{#if category}} : {{category}}{{/if}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/record{{#if month}}?month={{month}}{{/if}}">All</a>
+          <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Home">家居物業</a>
+          <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Transportation">交通出行</a>
+          <a class="dropdown-item"
+            href="/record?{{#if month}}month={{month}}&{{/if}}category=Entertainment"></i>休閒娛樂</a>
+          <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Food">餐飲食品</a>
+          <a class="dropdown-item" href="/record?{{#if month}}month={{month}}&{{/if}}category=Others">其他</a>
+        </div>
       </div>
     </div>
 
@@ -54,13 +55,13 @@
   <!-- record list -->
   <div class="d-flex flex-column bd-highlight mb-3 " id="data-panel">
 
-    <div class="d-flex flex-column" >
+    <div class="d-flex flex-column">
       {{!-- 排序列 div --}}
       <div class="row border rounded-lg pb-2 pt-2">
         <div class="col-1"></div>
         <div class="col-1  btn d-inline-block">用途</div>
-        <div class="col-2" style="text-align: center;" ><a class="btn btn-primary" href="">日期</a></div>
-        <div class="col-2" style="text-align: center;" ><a class="btn btn-primary" href="">價格</a></div>
+        <div class="col-2" style="text-align: center;"><a class="btn btn-primary" href="">日期</a></div>
+        <div class="col-2" style="text-align: center;"><a class="btn btn-primary" href="">價格</a></div>
       </div>
 
       {{!-- 內容 div --}}
@@ -79,13 +80,12 @@
         <a href="/records/{{{this._id}}}/edit" style="display: inline-block;">
           <button type="button" class="btn btn-success">修改</button>
         </a>
-        <a href="/records/{{{this._id}}}/delete" style="display: inline-block;">
-          <button type="button" class="btn btn-danger">刪除</button>
-        </a>
+        <form action="/records/{{{this._id}}}/delete?_method=DELETE" method="POST" style="display: inline-block;">
+          <button type="submit" class="btn btn-danger">刪除</button></form>
       </div>
       {{/each}}
     </div>
-    
+
   </div>
-  
+
 </div>

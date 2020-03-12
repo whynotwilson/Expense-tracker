@@ -53,8 +53,6 @@ router.get('/:id/edit', authenticated, (req, res) => {
     .exec((err, record) => {
       if (err) return console.log(err)
       record.date = record.date.toISOString().slice(0, 10)
-      console.log(typeof record.date)
-      console.log(record.date)
       return res.render('edit', { record })
     })
 })
@@ -74,5 +72,14 @@ router.put('/:id', authenticated, (req, res) => {
 })
 
 // 刪除 record
+router.delete('/:id/delete', authenticated, (req, res) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
+    if (err) return console.log(err)
+    record.remove(err => {
+      if (err) return console.log(err)
+      return res.redirect('/')
+    })
+  })
+})
 
 module.exports = router
