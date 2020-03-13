@@ -9,13 +9,6 @@ router.get('/', authenticated, (req, res) => {
   const month = req.query.month || ''
   const category = req.query.category || ''
 
-  // let dateRegex = new RegExp('')
-  // if (month) {
-  //   dateRegex = new RegExp(`[0-9]{4}-${month}-[0-9]{2}`)
-  // } else {
-  //   dateRegex = new RegExp('[0-9]{4}-[0-9]{2}-[0-9]{2}')
-  // }
-
   let categoryRegex = new RegExp('')
   if (category) {
     categoryRegex = new RegExp(category)
@@ -23,36 +16,30 @@ router.get('/', authenticated, (req, res) => {
     categoryRegex = new RegExp('[a-zA-Z]')
   }
 
-  // console.log('dateRegex', dateRegex)
-  console.log('categoryRegex', categoryRegex)
+  let totalAmount = 0
 
   // Record.find({ userId: req.user._id })
   Record.find({ userId: req.user._id, category: { $regex: categoryRegex } })
     .collation({ locale: 'en_US' }) // 設定英文語系
     .lean()
     .exec((err, records) => {
-      // 轉換 date 格式給前端使用
       if (err) return console.log(err)
+      // 轉換 date 格式給前端使用
       records.forEach((record) => {
         record.date = record.date.toISOString().slice(0, 10) // 把日期 Date 格式 轉成字串 xxxx-xx-xx 的格式
       })
       // 篩選月份
       if (month) {
-        console.log('if (month)')
         records = records.filter((record) => {
-          return record.date.slice(4, 8).includes(month)
+          return record.date.slice(5, 7).includes(month)
         })
       }
-
-      console.log('month', month)
-      // test
+      // 計算總金額
       records.forEach((record) => {
-        console.log(record.date)
+        totalAmount += record.amount
       })
 
-      console.log('-------')
-      console.log('')
-      return res.render('index', { records, month, category })
+      return res.render('index', { records, month, category, totalAmount })
     })
 })
 
