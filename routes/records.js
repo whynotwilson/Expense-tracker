@@ -65,6 +65,16 @@ router.get('/new', authenticated, (req, res) => {
 router.post('/', authenticated, (req, res) => {
   req.body.userId = req.user._id
   const record = new Record(req.body)
+
+  const errors = []
+  if (!record.name || !record.amount || !record.category || !record.date) {
+    errors.push({ message: '請填寫所有必填欄位' })
+  }
+
+  if (errors.length > 0) {
+    return res.render('new', { record, errors })
+  }
+
   record.save(err => {
     if (err) return console.log(err)
     return res.redirect('/')
