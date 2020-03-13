@@ -51,16 +51,6 @@ router.get('/new', authenticated, (req, res) => {
   return res.render('new', { today })
 })
 
-// 顯示查看單筆 record 詳細內容
-// router.get('/:id', authenticated, (req, res) => {
-//   Record.findOne({ _id: req.params.id, userId: req.user._id })
-//     .lean()
-//     .exec((err, record) => {
-//       if (err) return console.log(err)
-//       return res.render('detail', { record })
-//     })
-// })
-
 // 新增一筆 record
 router.post('/', authenticated, (req, res) => {
   req.body.userId = req.user._id
@@ -94,16 +84,34 @@ router.get('/:id/edit', authenticated, (req, res) => {
 
 // 修改 record
 router.put('/:id', authenticated, (req, res) => {
-  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
-    if (err) return console.log(err)
-    req.body.userId = req.user._id
-    Object.assign(record, req.body)
+  req.body.userId = req.user._id
 
-    record.save(err => {
+  const errors = []
+  if (!req.body.name || !req.body.amount || !req.body.category || !req.body.date) {
+    errors.push({ message: '請填寫所有必填欄位' })
+  }
+
+  if (errors.length > 0) {
+    Record.findOne({ _id: req.params.id, userId: req.user._id })
+      .lean()
+      .exec((err, record) => {
+        if (err) return console.log(err)
+        record.date = record.date.toISOString().slice(0, 10)
+        return res.render('edit', { record, errors })
+      })
+  } else {
+    Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
       if (err) return console.log(err)
-      return res.redirect('/')
+
+      req.body.userId = req.user._id
+      Object.assign(record, req.body)
+
+      record.save(err => {
+        if (err) return console.log(err)
+        return res.redirect('/')
+      })
     })
-  })
+  }
 })
 
 // 刪除 record

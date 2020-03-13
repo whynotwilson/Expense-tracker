@@ -4,7 +4,7 @@
     <div class="col-12 col-md-10 mx-auto">
       <h1 class="mb-3">新增支出</h1>
       <h4 class="mb-4">星號 * 為必填欄位</h4>
-
+      {{> messages }}
       <form method="POST" action="/records/{{{record._id}}}?_method=PUT">
 
         <div class="form-group">
