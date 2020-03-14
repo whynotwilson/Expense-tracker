@@ -45,8 +45,8 @@
 
     {{!-- Total expense --}}
     <div style="max-width: 50%; margin-right:25%; margin-left:25%;" class="mt-2 p-2 d-flex align-self-start mb-5">
-      <h1>總金額：</h1> <h1 style="color: coral;">{{{totalAmount}}}</h1>
-      <strong class="display-3 pl-3 pr-3" style="color:coral;">{{totalCost}}</strong>
+      <h1>總金額：</h1>
+      <h1 style="color: coral;">{{{totalAmount}}}</h1>
     </div>
   </div>
 
@@ -60,13 +60,14 @@
       <div class="row border rounded-lg pb-2 pt-2">
         <div class="col-1"></div>
         <div class="col-1  btn d-inline-block">用途</div>
-        <div class="col-2" style="text-align: center;"><a class="btn btn-primary" href="">日期</a></div>
-        <div class="col-2" style="text-align: center;"><a class="btn btn-primary" href="">價格</a></div>
+        <div class="col-2" style="text-align: center;"><a id="sortDate" class="btn btn-primary" href="#">日期</a>
+        </div>
+        <div class="col-2" style="text-align: center;"><a id="sortAmount" class="btn btn-primary" href="#">價格</a></div>
       </div>
 
       {{!-- 內容 div --}}
       {{#each records}}
-      <div class="row border rounded-lg pb-2 pt-2">
+      <div name="sortParent" class="row border rounded-lg pb-2 pt-2">
         <div class="col-1 align-self-center" style="text-align: center;">
           {{#ifEquals this.category "home"}}<i class="fas fa-home fa-2x"></i>{{/ifEquals}}
           {{#ifEquals this.category "transportation"}}<i class="fas fa-shuttle-van fa-2x"></i>{{/ifEquals}}

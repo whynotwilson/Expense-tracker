@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+app.use('/', express.static('public'))
 
 // 註冊樣板 ifEquals 方法
 app.engine('handlebars', exphbs({
