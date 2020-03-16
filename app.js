@@ -71,9 +71,11 @@ app.use((req, res, next) => {
   next()
 })
 
+// 設定路由器
 app.use('/', require('./routes/home'))
 app.use('/records', require('./routes/records'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auths'))
 
 app.listen(port, () => {
   console.log('app is running......')

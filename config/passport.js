@@ -28,23 +28,29 @@ module.exports = passport => {
       clientID: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
       callbackURL: process.env.FACEBOOK_CALLBACK,
-      profileFiedlds: ['email', 'displayName']
+      profileFields: ['email', 'displayName']
     }, (accessToken, refreshToken, profile, done) => {
       // 檢查是否已註冊，未註冊就建立新用戶
       // console.log('profile', profile)
-      User.findOne({ email: profile._json.email }).then(user => {
+      User.findOne({
+        email: profile._json.email
+      }).then(user => {
         if (!user) {
           var randomPassword = Math.random().toString(36).slice(-8)
           bcrypt.genSalt(10, (err, salt) => {
             if (err) console.log(err)
+
             bcrypt.hash(randomPassword, salt, (err, hash) => {
               if (err) console.error(err)
+
               var newUser = User({
                 name: profile._json.name,
                 email: profile._json.email,
                 password: hash
               })
-              // console.log('newUser.email', newUser.email)
+
+              console.log('newUser.email', newUser.email)
+
               newUser.save().then(user => {
                 return done(null, user)
               }).catch(err => {
