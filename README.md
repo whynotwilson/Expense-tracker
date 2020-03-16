@@ -15,9 +15,9 @@ AC week 5 實作 會員系統與記帳系統
    * 總覽
    * 篩選(時間、類別)
    * 排序(按時間、按價格)
-   * 新增
-   * 編輯
-   * 刪除
+   * 新增支出
+   * 編輯支出
+   * 刪除支出
 
 
 建置環境
@@ -53,7 +53,3 @@ passport-local<br><br>
 　　`npm run dev</font>`<br>
   
 5.到瀏覽器輸入網址 http://localhost:3000/<br>
-
-
-
-# expense-tracker
