@@ -12,11 +12,11 @@
   <header>
     <nav class="navbar navbar-dark bg-primary justify-content-between">
       <a class="navbar-brand" href="/">家庭記帳本</a>
-      {{!-- {{#if isAuthenticated}} --}}
-      {{!-- <a href="/users/logout" class="btn btn-outline-light">Logout</a> --}}
-      {{!-- {{else}} --}}
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+      {{else}}
       <a href="/users/login" class="btn btn-outline-light">Login</a>
-      {{!-- {{/if}} --}}
+      {{/if}}
     </nav>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
