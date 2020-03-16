@@ -55,7 +55,7 @@
   <!-- record list -->
   <div class="d-flex flex-column bd-highlight mb-3 " id="data-panel">
 
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column" id="sortFather">
       {{!-- 排序列 div --}}
       <div class="row border rounded-lg pb-2 pt-2">
         <div class="col-1"></div>
@@ -67,7 +67,7 @@
 
       {{!-- 內容 div --}}
       {{#each records}}
-      <div name="sortParent" class="row border rounded-lg pb-2 pt-2">
+      <div name="sortDatas" class="row border rounded-lg pb-2 pt-2">
         <div class="col-1 align-self-center" style="text-align: center;">
           {{#ifEquals this.category "home"}}<i class="fas fa-home fa-2x"></i>{{/ifEquals}}
           {{#ifEquals this.category "transportation"}}<i class="fas fa-shuttle-van fa-2x"></i>{{/ifEquals}}
@@ -76,8 +76,8 @@
           {{#ifEquals this.category "others"}}<i class="fas fa-pen fa-2x"></i>{{/ifEquals}}
         </div>
         <div class="col-1 d-inline-block align-self-center" style="text-align: center;"> {{ this.name }} </div>
-        <div class="col-2 d-inline-block align-self-center" style="text-align: center;"> {{ this.date }} </div>
-        <div class="col-2 d-inline-block align-self-center" style="text-align: center;"> {{ this.amount }} </div>
+        <div class="col-2 d-inline-block align-self-center" name="date" style="text-align: center;"> {{ this.date }} </div>
+        <div class="col-2 d-inline-block align-self-center" name="amount" style="text-align: center;"> {{ this.amount }} </div>
         <a href="/records/{{{this._id}}}/edit" style="display: inline-block;">
           <button type="button" class="btn btn-success">修改</button>
         </a>
